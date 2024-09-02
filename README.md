@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# 💡 Context API 과제 소개
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+숙멋의 구성원을 소개하는 간단한 코드에요. 프론트, 백, 기획/디자인 세 가지 버튼 클릭을 통해 파트별 구성원을 렌더링합니다.
 
-## Available Scripts
+<br/>
 
-In the project directory, you can run:
+### ⚙️ 컴포넌트 설명 및 구조
 
-### `yarn start`
+컴포넌트|구조
+---|---|
+<img src='https://github.com/user-attachments/assets/42f32ee4-1146-4cdb-9de4-03495a75b8e3' width=600px/>| <img width="226" alt="스크린샷 2024-09-02 오후 6 38 31" src="https://github.com/user-attachments/assets/b51002c9-0c67-48d2-a0ea-83aa6151f8ad">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `Content` : Left, Right 컴포넌트를 좌우에 배치
+- `Left` : 프론트엔드, 백엔드, 기획/디자인 버튼 렌더링과 클릭 이벤트 처리를 담당
+- `Right` : 오른쪽 컴포넌트, Content와 MemberList를 이어주는 중간 컴포넌트
+- `MemberList` : Left에서 클릭한 part의 구성원을 렌더링
+- **`sookmut.js`** : 숙멋 구성원들의 이름, 파트, 역할을 담은 배열
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br/>
 
-### `yarn test`
+### 🚨 prop drilling 문제
+App.js에서 `const [part, setPart] = useState("");`로 선택한 파트 상태를 관리합니다.<br/>
+하위 컴포넌트에서 해당 상태를 변경하고 접근하기 위해 중간 컴포넌트들을 거쳐 prop을 전달해야하는 prop drilling 문제가 발생하죠 😥 <br/>
+해당 문제를 분석해보고, `context`를 통해 문제를 해결해봅시다!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>
 
-### `yarn build`
+### 🔎 과제 진행 순서
+1. 본인 이름 레포지토리에서 과제 브랜치를 만든다.
+2. 이 과제 레포를 clone 받는다.
+3. 클론 받은 폴더에서 터미널을 열고 연결되어 있는 깃 저장소를 삭제한다.
+  ```
+   rm -rf ./.git
+  ```
+5. 클론 받은 폴더를 본인 이름 레포 폴더로 옮긴다. (Context-HW → LeeYeji)
+6. 그동안 했던 것처럼 과제 브랜치에서 과제를 진행하고 push 후 pr 작성!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br/>
+<br/>
+직접 컴포넌트 구조를 분석해보고, context를 적용해보면서 전역상태관리에 대한 이해도를 높여봅시다 💪🏻
