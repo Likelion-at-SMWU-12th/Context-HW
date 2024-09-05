@@ -36,6 +36,8 @@ App.js에서 `const [part, setPart] = useState("");`로 선택한 파트 상태�
 5. 클론 받은 폴더를 본인 이름 레포 폴더로 옮긴다. (Context-HW → LeeYeji)
 6. 그동안 했던 것처럼 과제 브랜치에서 과제를 진행하고 push 후 pr 작성!
 
+<br/>
+
 ### 🦄 힌트
 Provider로 context를 사용할 범위를 감싸준다고 했었죠? <br/>
 App.js에서도 context 값을 사용하려면 App.js보다 더 큰 범위를 감싸주어야해요. 그곳이 어딜까..<br/>
